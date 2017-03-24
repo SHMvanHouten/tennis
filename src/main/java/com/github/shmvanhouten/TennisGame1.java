@@ -3,6 +3,8 @@ package com.github.shmvanhouten;
 public class TennisGame1 implements TennisGame {
     private int playerOneScore = 0;
     private int playerTwoScore = 0;
+    private String[] tennisScores = {"Love","Fifteen","Thirty","Forty"};
+
 
     public void wonPoint(String playerName){
         if(playerName.equals("player1")){
@@ -13,9 +15,6 @@ public class TennisGame1 implements TennisGame {
         }
     };
     public String getScore(){
-        if (playerOneScore == 1 && playerTwoScore == 0){
-            return "Fifteen-Love";
-        }
-        else{return "oops!";}
+        return tennisScores[playerOneScore] + "-" + tennisScores[playerTwoScore];
     }
 }

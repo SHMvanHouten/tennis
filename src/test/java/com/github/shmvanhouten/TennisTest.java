@@ -16,4 +16,14 @@ public class TennisTest {
                 is("Fifteen-Love")
         );
     }
+    @Test
+    public void itShouldGiveScoreThirtyLove() throws Exception{
+        TennisGame game = new TennisGame1();
+        game.wonPoint("player1");
+        game.wonPoint("player1");
+        assertThat(
+                game.getScore(),
+                is("Thirty-Love")
+        );
+    }
 }
