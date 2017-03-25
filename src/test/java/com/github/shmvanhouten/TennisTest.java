@@ -26,4 +26,15 @@ public class TennisTest {
                 is("Thirty-Love")
         );
     }
+    @Test
+    public void itShouldGiveScoreFifteenAll() throws Exception{
+        TennisGame game = new TennisGame1();
+        game.wonPoint("player1");
+        game.wonPoint("player2");
+        assertThat(
+                game.getScore(),
+                is("Fifteen-All")
+        );
+    }
+
 }

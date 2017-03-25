@@ -5,7 +5,6 @@ public class TennisGame1 implements TennisGame {
     private int playerTwoScore = 0;
     private String[] tennisScores = {"Love","Fifteen","Thirty","Forty"};
 
-
     public void wonPoint(String playerName){
         if(playerName.equals("player1")){
             playerOneScore ++;
@@ -15,6 +14,11 @@ public class TennisGame1 implements TennisGame {
         }
     };
     public String getScore(){
-        return tennisScores[playerOneScore] + "-" + tennisScores[playerTwoScore];
+        if(playerOneScore == playerTwoScore){
+            return tennisScores[playerOneScore] + "-All";
+        }
+        else{
+            return tennisScores[playerOneScore] + "-" + tennisScores[playerTwoScore];
+        }
     }
 }
