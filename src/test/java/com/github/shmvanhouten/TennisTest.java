@@ -48,6 +48,32 @@ public class TennisTest {
                 is("Deuce")
         );
     }
+    @Test
+    public void itShouldGiveScoreAdvantagePlayer1() throws Exception{
+        TennisGame game = new TennisGame1();
+        int player1Score = 4;
+        int player2Score = 3;
+
+        scorePointsForEachPlayer(game, player1Score, player2Score);
+        assertThat(
+                game.getScore(),
+                is("Advantage player1")
+        );
+    }
+    @Test
+    public void itShouldGiveScoreAdvantagePlayer2() throws Exception{
+        TennisGame game = new TennisGame1();
+        int player1Score = 3;
+        int player2Score = 4;
+
+        scorePointsForEachPlayer(game, player1Score, player2Score);
+        assertThat(
+                game.getScore(),
+                is("Advantage player2")
+        );
+    }
+
+
 
     private void scorePointsForEachPlayer(TennisGame game, int player1Score, int player2Score) {
         int highestScore = Math.max(player1Score, player2Score);

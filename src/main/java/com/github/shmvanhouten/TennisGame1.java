@@ -24,7 +24,12 @@ public class TennisGame1 implements TennisGame {
             }
         }
         else {
-            return "Deuce";
+            if (playerScoresAreEqual) {
+                return "Deuce";
+            } else{
+                if (playerOneScore > playerTwoScore){return "Advantage player1";}
+                else {return "Advantage player2";}
+            }
         }
     }
 }
