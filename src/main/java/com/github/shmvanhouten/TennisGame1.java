@@ -14,11 +14,17 @@ public class TennisGame1 implements TennisGame {
         }
     };
     public String getScore(){
-        if(playerOneScore == playerTwoScore){
-            return tennisScores[playerOneScore] + "-All";
+        boolean playerScoresAreEqual = playerOneScore == playerTwoScore;
+        boolean scoresAreFortyOrBelowAndNotDeuce = playerOneScore < 4 && playerTwoScore < 3 || playerOneScore < 3 && playerTwoScore < 4;
+        if (scoresAreFortyOrBelowAndNotDeuce) {
+            if (playerScoresAreEqual) {
+                return tennisScores[playerOneScore] + "-All";
+            } else {
+                return tennisScores[playerOneScore] + "-" + tennisScores[playerTwoScore];
+            }
         }
-        else{
-            return tennisScores[playerOneScore] + "-" + tennisScores[playerTwoScore];
+        else {
+            return "Deuce";
         }
     }
 }
