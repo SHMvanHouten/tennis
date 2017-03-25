@@ -3,16 +3,24 @@ package com.github.shmvanhouten;
 public class TennisGame1 implements TennisGame {
     private int playerOneScore = 0;
     private int playerTwoScore = 0;
+    private String playerOneName;
+    private String playerTwoName;
+
     private String[] tennisScores = {"Love","Fifteen","Thirty","Forty"};
 
+    TennisGame1 (String player1Name, String player2Name){
+        this.playerOneName = player1Name;
+        this.playerTwoName = player2Name;
+    }
+
     public void wonPoint(String playerName){
-        if(playerName.equals("player1")){
+        if(playerName.equals(playerOneName)){
             playerOneScore ++;
         }
-        if(playerName.equals("player2")){
+        if(playerName.equals(playerTwoName)){
             playerTwoScore ++;
         }
-    };
+    }
     public String getScore(){
         String score;
         boolean playerScoresAreEqual = playerOneScore == playerTwoScore;
@@ -38,8 +46,8 @@ public class TennisGame1 implements TennisGame {
     }
 
     private String getMostWinningPlayer(String score) {
-        if (playerOneScore > playerTwoScore){score += "player1";}
-        else {score += "player2";}
+        if (playerOneScore > playerTwoScore){score += playerOneName;}
+        else {score += playerTwoName;}
         return score;
     }
 

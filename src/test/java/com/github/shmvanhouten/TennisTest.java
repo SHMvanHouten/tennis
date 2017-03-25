@@ -8,7 +8,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class TennisTest {
     @Test
     public void itShouldGiveScoreFifteenLove() throws Exception{
-        TennisGame game = new TennisGame1();
+        TennisGame game = new TennisGame1("player1", "player2");
         game.wonPoint("player1");
 
         assertThat(
@@ -18,7 +18,7 @@ public class TennisTest {
     }
     @Test
     public void itShouldGiveScoreThirtyLove() throws Exception{
-        TennisGame game = new TennisGame1();
+        TennisGame game = new TennisGame1("player1", "player2");
         game.wonPoint("player1");
         game.wonPoint("player1");
         assertThat(
@@ -28,7 +28,7 @@ public class TennisTest {
     }
     @Test
     public void itShouldGiveScoreFifteenAll() throws Exception{
-        TennisGame game = new TennisGame1();
+        TennisGame game = new TennisGame1("player1", "player2");
         game.wonPoint("player1");
         game.wonPoint("player2");
         assertThat(
@@ -38,7 +38,7 @@ public class TennisTest {
     }
     @Test
     public void itShouldGiveScoreDeuce() throws Exception{
-        TennisGame game = new TennisGame1();
+        TennisGame game = new TennisGame1("player1", "player2");
         int player1Score = 3;
         int player2Score = 3;
 
@@ -50,7 +50,7 @@ public class TennisTest {
     }
     @Test
     public void itShouldGiveScoreAdvantagePlayer1() throws Exception{
-        TennisGame game = new TennisGame1();
+        TennisGame game = new TennisGame1("player1", "player2");
         int player1Score = 4;
         int player2Score = 3;
 
@@ -62,7 +62,7 @@ public class TennisTest {
     }
     @Test
     public void itShouldGiveScoreAdvantagePlayer2() throws Exception{
-        TennisGame game = new TennisGame1();
+        TennisGame game = new TennisGame1("player1", "player2");
         int player1Score = 3;
         int player2Score = 4;
 
@@ -74,7 +74,7 @@ public class TennisTest {
     }
     @Test
     public void itShouldGiveTheWinToPlayer1() throws Exception{
-        TennisGame game = new TennisGame1();
+        TennisGame game = new TennisGame1("player1", "player2");
         int player1Score = 5;
         int player2Score = 3;
 
