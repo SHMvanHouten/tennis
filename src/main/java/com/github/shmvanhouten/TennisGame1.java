@@ -31,12 +31,23 @@ public class TennisGame1 implements TennisGame {
         if (playerScoresAreEqual) {
             score = "Deuce";
         } else{
-            int scoreDifference = Math.abs(playerOneScore - playerTwoScore);
-            if(scoreDifference >1){score = "Win for ";}
-            else{score = "Advantage ";}
-            if (playerOneScore > playerTwoScore){score += "player1";}
-            else {score += "player2";}
+            score = ascertainIfItIsAdvantageOrWin();
+            score = getMostWinningPlayer(score);
         }
+        return score;
+    }
+
+    private String getMostWinningPlayer(String score) {
+        if (playerOneScore > playerTwoScore){score += "player1";}
+        else {score += "player2";}
+        return score;
+    }
+
+    private String ascertainIfItIsAdvantageOrWin() {
+        String score;
+        int scoreDifference = Math.abs(playerOneScore - playerTwoScore);
+        if(scoreDifference >1){score = "Win for ";}
+        else{score = "Advantage ";}
         return score;
     }
 
