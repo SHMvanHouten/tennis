@@ -68,4 +68,21 @@ public class TennisGame1 implements TennisGame {
         }
         return score;
     }
+    public static void main (String[] args) {
+        String player1Name = "Marjan";
+        String player2Name = "Sjoerd";
+        int player1Score = 1;
+        int player2Score = 2;
+        TennisGame game = new TennisGame1(player1Name, player2Name);
+        int highestScore = Math.max(player1Score, player2Score);
+        for (int i = 0; i< highestScore; i++){
+            if (i < player1Score){
+                game.wonPoint(player1Name);
+            }
+            if (i < player2Score){
+                game.wonPoint(player2Name);
+            }
+        }
+        System.out.println(game.getScore());
+    }
 }
