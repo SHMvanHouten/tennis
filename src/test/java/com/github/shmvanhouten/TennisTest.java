@@ -42,7 +42,7 @@ public class TennisTest {
         int player1Score = 3;
         int player2Score = 3;
 
-        scorePointsForEachPlayer(game, player1Score, player2Score);
+        simulateMatch(game, player1Score, player2Score);
         assertThat(
                 game.getScore(),
                 is("Deuce")
@@ -54,7 +54,7 @@ public class TennisTest {
         int player1Score = 4;
         int player2Score = 3;
 
-        scorePointsForEachPlayer(game, player1Score, player2Score);
+        simulateMatch(game, player1Score, player2Score);
         assertThat(
                 game.getScore(),
                 is("Advantage player1")
@@ -66,16 +66,29 @@ public class TennisTest {
         int player1Score = 3;
         int player2Score = 4;
 
-        scorePointsForEachPlayer(game, player1Score, player2Score);
+        simulateMatch(game, player1Score, player2Score);
         assertThat(
                 game.getScore(),
                 is("Advantage player2")
         );
     }
+    @Test
+    public void itShouldGiveTheWinToPlayer1() throws Exception{
+        TennisGame game = new TennisGame1();
+        int player1Score = 5;
+        int player2Score = 3;
+
+        simulateMatch(game, player1Score, player2Score);
+        assertThat(
+                game.getScore(),
+                is("Win for player1")
+        );
+    }
 
 
 
-    private void scorePointsForEachPlayer(TennisGame game, int player1Score, int player2Score) {
+
+    private void simulateMatch(TennisGame game, int player1Score, int player2Score) {
         int highestScore = Math.max(player1Score, player2Score);
         for (int i = 0; i< highestScore; i++){
             if (i < player1Score){

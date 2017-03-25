@@ -14,22 +14,39 @@ public class TennisGame1 implements TennisGame {
         }
     };
     public String getScore(){
+        String score;
         boolean playerScoresAreEqual = playerOneScore == playerTwoScore;
         boolean scoresAreFortyOrBelowAndNotDeuce = playerOneScore < 4 && playerTwoScore < 3 || playerOneScore < 3 && playerTwoScore < 4;
         if (scoresAreFortyOrBelowAndNotDeuce) {
-            if (playerScoresAreEqual) {
-                return tennisScores[playerOneScore] + "-All";
-            } else {
-                return tennisScores[playerOneScore] + "-" + tennisScores[playerTwoScore];
-            }
+            score = getScoreIfGameHasNotPassedDeuceStage(playerScoresAreEqual);
         }
         else {
-            if (playerScoresAreEqual) {
-                return "Deuce";
-            } else{
-                if (playerOneScore > playerTwoScore){return "Advantage player1";}
-                else {return "Advantage player2";}
-            }
+            score = getScoreIfGameHasEnteredDeuceStage(playerScoresAreEqual);
         }
+        return score;
+    }
+
+    private String getScoreIfGameHasEnteredDeuceStage(boolean playerScoresAreEqual) {
+        String score;
+        if (playerScoresAreEqual) {
+            score = "Deuce";
+        } else{
+            int scoreDifference = Math.abs(playerOneScore - playerTwoScore);
+            if(scoreDifference >1){score = "Win for ";}
+            else{score = "Advantage ";}
+            if (playerOneScore > playerTwoScore){score += "player1";}
+            else {score += "player2";}
+        }
+        return score;
+    }
+
+    private String getScoreIfGameHasNotPassedDeuceStage(boolean playerScoresAreEqual) {
+        String score;
+        if (playerScoresAreEqual) {
+            score = tennisScores[playerOneScore] + "-All";
+        } else {
+            score = tennisScores[playerOneScore] + "-" + tennisScores[playerTwoScore];
+        }
+        return score;
     }
 }
