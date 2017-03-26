@@ -1,4 +1,5 @@
 package com.github.shmvanhouten;
+import java.util.*;
 
 public class TennisGame1 implements TennisGame {
     private int playerOneScore = 0;
@@ -6,7 +7,9 @@ public class TennisGame1 implements TennisGame {
     private String playerOneName;
     private String playerTwoName;
 
-    private String[] tennisScores = {"Love","Fifteen","Thirty","Forty"};
+//    private String[] tennisScores = {"Love","Fifteen","Thirty","Forty"};
+    private HashMap<Integer, String> tennisScores = new HashMap<>();
+
 
     TennisGame1 (String player1Name, String player2Name){
         this.playerOneName = player1Name;
@@ -23,6 +26,10 @@ public class TennisGame1 implements TennisGame {
     }
     public String getScore(){
         String score;
+        tennisScores.put(0, "Love");
+        tennisScores.put(1, "Fifteen");
+        tennisScores.put(2, "Thirty");
+        tennisScores.put(3, "Fourty");
         boolean playerScoresAreEqual = playerOneScore == playerTwoScore;
         boolean scoresAreFortyOrBelowAndNotDeuce = playerOneScore < 4 && playerTwoScore < 3 || playerOneScore < 3 && playerTwoScore < 4;
         if (scoresAreFortyOrBelowAndNotDeuce) {
@@ -62,9 +69,10 @@ public class TennisGame1 implements TennisGame {
     private String getScoreIfGameHasNotPassedDeuceStage(boolean playerScoresAreEqual) {
         String score;
         if (playerScoresAreEqual) {
-            score = tennisScores[playerOneScore] + "-All";
+//            score = tennisScores[playerOneScore] + "-All";
+            score = tennisScores.get(playerOneScore) + "-All";
         } else {
-            score = tennisScores[playerOneScore] + "-" + tennisScores[playerTwoScore];
+            score = tennisScores.get(playerOneScore) + "-" + tennisScores.get(playerTwoScore);
         }
         return score;
     }
